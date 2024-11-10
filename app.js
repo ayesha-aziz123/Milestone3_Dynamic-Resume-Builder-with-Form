@@ -3,9 +3,6 @@
 let cvform = document.querySelector("#cv-form");
 let skillBtn = document.querySelector("#skills-btn");
 let skillList = document.querySelector(".skills");
-let editbtn = document.getElementById("edit");
-let cvTemplate = document.getElementById("cv-template");
-let sharebtn = document.getElementById("share-btn");
 skillBtn.innerHTML = "Hide Skills";
 skillBtn?.addEventListener("click", () => {
     if (skillList.style.display === "none" || !skillList.style.display) {
@@ -86,23 +83,4 @@ cvform?.addEventListener("submit", (e) => {
     }
     document.getElementById("cv-form").style.display = "none";
     document.getElementById("cv-template").style.display = "block";
-    let names = document.getElementById("nameField");
-    // shareable link
-    sharebtn.addEventListener("click", async () => {
-        try {
-            const shareableLink = `https://milestone5-unique-path-and-shareable-link-ayesha.vercel.app/?username.value/${names.value.replace(/\s+/g, '_')}`;
-            await navigator.clipboard.writeText(shareableLink);
-            alert("Shareable linkcopied to Clipboard!");
-        }
-        catch (err) {
-            alert("Failed to copy link clipboard . please try again!");
-        }
-    });
-});
-function printCV() {
-    window.print();
-}
-editbtn?.addEventListener("click", () => {
-    cvform.style.display = "block";
-    cvTemplate.style.display = "none";
 });
